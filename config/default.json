@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://gkim:123@contactkeeper-ipuf4.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://gkim:123@contactkeeper-ipuf4.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
 }
