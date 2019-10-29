@@ -4,7 +4,7 @@ The aim of this project is to provide users with storage service that enables th
 With this service, the clients are able to simply access to summary of the targets' information - including Name, Email, Phone Number, status (Personal or Professional).
 
 ## Technologies
-### (MERN) MongoDB, Express JS, React JS, React Hooks & Context, Node JS
+### (MERN Stack) MongoDB, Express.js, React.js, React Hooks & Context, Node.js
 
 <br/><br/>
 ## Commands | []: optional
