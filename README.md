@@ -5,8 +5,8 @@ With this service, the clients are able to simply access to summary of the targe
 
 ## Technologies
 ### (MERN Stack) MongoDB, Express.js, React.js, React Hooks & Context, Node.js
+<br/>
 
-<br/><br/>
 ## Commands | []: optional
 
 ### ----- Setup Back-End ----- 
