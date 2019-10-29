@@ -1,10 +1,17 @@
 # Contact Keeper
+
 ## Introduction
 The aim of this project is to provide users with storage service that enables them to easily manage personal contact information.
 With this service, the clients are able to simply access to summary of the targets' information - including Name, Email, Phone Number, status (Personal or Professional).
 
 ## Technologies
-### (MERN Stack) MongoDB, Express.js, React.js, React Hooks & Context, Node.js
+### (MERN Stack) 
+### MongoDB
+### Express.js
+### React.js
+### React Hooks & Context
+### Node.js
+### JWT authentication
 <br/>
 
 ## Commands | []: optional
