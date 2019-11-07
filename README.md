@@ -164,3 +164,87 @@ yarn-error.log*
 ```index.css```<br/>
 ```logo.svg```<br/>
 ```serviceWorker.js```
+
+## Production
+### 1. server.js
+```
+const express = require('express');
+const connectDB = require('./config/db');
+const path = require('path');
+
+const app = express();
+
+// Connect Database
+connectDB();
+
+// Init Middleware
+app.use(express.json({ extended: false }));
+
+app.get('/', (req, res) =>
+  res.json({ msg: 'Welcome to the Contact Keeper API...' })
+);
+
+// Define Routes
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/contacts', require('./routes/contacts'));
+
+// Serve static assets in production <-- This is added.
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
+}
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+```
+#### 2. package.json
+```
+{
+  "name": "Contact_Keeper",
+  "version": "1.0.0",
+  "description": "Contact manager app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client" <-- This is added.
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
+  }
+}
+```
+#### 3. Deploy a React full-stack application to Heroku
+```heroku --version```<br/>
+```heroku login```<br/> in the root directory
+```heroku create```<br/>
+```git init```<br/>
+```git add .```<br/>
+```git commit -m ...```<br/>
+```heroku git:remote -a radiant-citadel-20869```<br/>
+```git push heroku master```
+### If you want to change files and re-deploy it
+```git add .```<br/>
+```git commit -m ...```<br/>
+```git push heroku master```
